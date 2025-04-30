@@ -8,3 +8,45 @@ editor: visual
 ## Introduction: 
 
 This Quarto document will demonstrate how to use Git and GitHub for version control and reproducible workflows.
+
+### Step 3:
+
+#### Branches in Git let us work on changes without touching the main version of the project.  This is helpful when we want to test, edit, or build features separately.
+
+#### Step 3.1: Create and Switch to a New Branch
+
+We want to create a branch called \`testbranch\` and start working in it.
+
+This allows us to make changes without affecting the main version of our project.
+
+In the terminal, I ran:
+
+1.  **git switch -c testbranch**
+
+2.  What it does is it creates a branch and at the same time switches to the new branch as well in one go:
+
+3.  We can also do this in two separate steps
+
+    1.   First, create the branch:
+
+        1.  git branch testbranch
+
+    2.  Then, switch to it:
+
+        1.  git switch testbranch
+
+4.  Both approaches work the same — but using git switch -c is quicker.
+
+#### Step 3.2:  Modify example.qmd and Commit the Changes
+
+In this step, we’ll make a small change to the example.qmd file inside the testbranch.
+
+This helps demonstrate how Git tracks changes and lets us commit them in a separate branch.
+
+-   This line was added in the testbranch to demonstrate branching and committing.
+
+Then I ran the following commands in the terminal:
+
+-   git add example.qmd
+
+-   git commit -m "Step 3.2: Added line to example.qmd in testbranch"
