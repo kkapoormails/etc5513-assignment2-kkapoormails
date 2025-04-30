@@ -1,0 +1,10 @@
+---
+title: "ETC5513_assignment_2_git_guide"
+author: "Kunal Kapoor | 34144161"
+format: html
+editor: visual
+---
+
+## Introduction: 
+
+This Quarto document will demonstrate how to use Git and GitHub for version control and reproducible workflows.
