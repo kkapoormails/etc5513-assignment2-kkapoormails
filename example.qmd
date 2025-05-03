@@ -5,6 +5,6 @@ format: html
 editor: visual
 ---
 
-## Introduction: 
+## Conflict 
 
-This Quarto document will demonstrate how to use Git and GitHub for version control and reproducible workflows.
+Added a line for creating conflict deliberately.
