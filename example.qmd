@@ -59,3 +59,14 @@ Then I ran the following commands in the terminal:
 
 Completed the 3 step completely:
 
+Step 7: 
+## Simple Plot Example
+```{r}
+plot(1:10, 1:10,
+     type = "o",
+     col = "blue",
+     xlab = "X Values",
+     ylab = "Y Values",
+     main = "Simple Line Plot Example")
+```
+
