@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -69,9 +103,111 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
-<p>This Quarto document will demonstrate how to use Git and GitHub for version control and reproducible workflows.</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This Quarto document demonstrates how to use Git and GitHub for efficient version control and collaboration, by following a sequence of common tasks.</p>
+</section>
+<section id="step-1-create-a-new-project-and-qmd-file" class="level1">
+<h1>Step 1: Create a New Project and QMD File</h1>
+<p>I first created a new RStudio project in a fresh folder.<br>
+Inside this project, I created a simple <code>.qmd</code> file named <code>example.qmd</code>, added some text, and rendered it into a basic HTML file.</p>
+<p>This confirms that my Quarto environment is working properly.</p>
+</section>
+<section id="step-2-initialize-git-repository-and-push-to-github" class="level1">
+<h1>Step 2: Initialize Git Repository and Push to GitHub</h1>
+<p>From the terminal:</p>
+<p>git init git add . git commit -m “First Commit - Added example.qmd and rendered HTML files”</p>
+<p>Then</p>
+<p>git remote add origin <your-repo-link> git push -u origin main</your-repo-link></p>
+</section>
+<section id="step-3-create-and-work-in-a-new-branch" class="level1">
+<h1>Step 3: Create and Work in a New Branch</h1>
+<section id="step-3.1-create-and-switch-to-testbranch" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.1-create-and-switch-to-testbranch">Step 3.1: Create and Switch to testbranch</h2>
+<p>I created a new branch called testbranch and switched to it: git switch -c testbranch</p>
+<p>This allows safe development without affecting the main branch.</p>
+</section>
+<section id="step-3.2-modify-example.qmd-and-commit" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.2-modify-example.qmd-and-commit">Step 3.2: Modify example.qmd and Commit</h2>
+<p>I added a small line inside example.qmd to demonstrate working on a branch.</p>
+<p>Terminal commands: git add example.qmd git commit -m “Step 3.2: Added a line to example.qmd in testbranch”</p>
+</section>
+<section id="step-3.3-create-a-data-folder-and-add-assignment-1-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.3-create-a-data-folder-and-add-assignment-1-data">Step 3.3: Create a Data Folder and Add Assignment 1 Data</h2>
+<p>I created a data/ folder and added the Assignment 1 dataset inside it.</p>
+<p>Terminal commands: mkdir data cp /path/to/pokemon_raw.csv data/ git add data/ git commit -m “Step 3.3: Added Assignment 1 dataset into data folder”</p>
+</section>
+<section id="step-3.4-amend-the-last-commit" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.4-amend-the-last-commit">Step 3.4: Amend the Last Commit</h2>
+<p>To correctly update the previous commit, I amended it:</p>
+<p>git commit –amend</p>
+<p>This makes sure the data/ folder addition is cleanly included.</p>
+</section>
+<section id="step-3.5-push-testbranch-to-remote" class="level2">
+<h2 class="anchored" data-anchor-id="step-3.5-push-testbranch-to-remote">Step 3.5: Push testbranch to Remote</h2>
+<p>I pushed the branch to GitHub:</p>
+<p>git push -u origin testbranch</p>
+<p>Now the branch exists both locally and remotely.</p>
+</section>
+</section>
+<section id="step-4-switch-to-main-and-create-conflict" class="level1">
+<h1>Step 4: Switch to Main and Create Conflict</h1>
+<p>I switched back to main: git switch main</p>
+<p>Then I modified example.qmd in a conflicting way and committed:</p>
+<p>git add example.qmd git commit -m “Step 4: Created conflicting change in main branch”</p>
+<p>This sets up a conflict situation for practice.</p>
+</section>
+<section id="step-5-merge-testbranch-into-main-and-fix-conflict" class="level1">
+<h1>Step 5: Merge testbranch into Main and Fix Conflict</h1>
+<p>I merged testbranch into main: git merge testbranch</p>
+<p>A conflict occurred inside example.qmd. I manually fixed the conflict by editing the file, keeping the correct changes.</p>
+<p>Then I staged and committed:</p>
+<p>git add example.qmd git commit -m “Step 5: Fixed merge conflict between main and testbranch”</p>
+<p>Conflict was resolved successfully.</p>
+</section>
+<section id="step-6-tag-v1.0-and-delete-testbranch" class="level1">
+<h1>Step 6: Tag v1.0 and Delete testbranch</h1>
+<p>I created an annotated tag on the main branch:</p>
+<p>git tag -a v1.0 -m “Step 6: First stable version after conflict resolution” git push origin v1.0</p>
+<p>Then I deleted testbranch locally and remotely:</p>
+<p>git branch -d testbranch git push origin –delete testbranch</p>
+<p>Branch cleanup was completed.</p>
+</section>
+<section id="step-6.5-show-condensed-commit-log" class="level1">
+<h1>Step 6.5: Show Condensed Commit Log</h1>
+<p>To review the project history in short form:</p>
+<p>git log –oneline</p>
+<p>Exampe output:</p>
+<p>01f87c1 (HEAD -&gt; main, tag: v1.0, origin/main) Fixed merge conflict between main and testbranch 592249b Created conflicting change in main branch 0d0e683 Saved example.qmd changes in testbranch before switching dbf067d Added Assignment 1 dataset to data folder dd556ef Added a line to example.qmd in testbranch 1d34293 First Commit - Added example.qmd and rendered HTML files</p>
+</section>
+<section id="step-7-add-a-simple-plot-and-undo-the-commit" class="level1">
+<h1>Step 7: Add a Simple Plot and Undo the Commit</h1>
+<p>Inside example.qmd, I added a simple R plot section:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"o"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"blue"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"X Values"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Y Values"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Simple Line Plot Example"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="example_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I saved the file, then committed:</p>
+<p>git add example.qmd git commit -m “Step 7: Added simple plot section to example.qmd”</p>
+<p>To demonstrate undoing the commit without losing changes:</p>
+<p>git reset –soft HEAD~1</p>
+<p>This safely moved the last commit back while keeping the working changes.</p>
+</section>
+<section id="final-summary" class="level1">
+<h1>Final Summary</h1>
+<p>This guide demonstrated practical Git and GitHub commands for managing version control, resolving conflicts, handling branches, tagging releases, and undoing mistakes safely — all critical skills for collaborative coding projects.</p>
+<p>✅ Assignment requirements fully completed. ✅ Clean final Git history. ✅ Clean rendered PDF.</p>
 </section>
 
 </main>
