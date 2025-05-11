@@ -232,6 +232,8 @@ First we check which files Git is already tracking by running a simple command i
 git status 
 ```
 
+![Git status showing tracked and untracked files](images/git_status.png)
+
 This shows you which files Git is tracking and which ones are new.
 
 You should see something like:
@@ -251,6 +253,8 @@ These are files Git knows exist but hasn’t saved yet.
 git add example.qmd 
 ```
 
+![Staging files by git add](images/git_add.png)
+
 This creates the first checkpoint of our project and also tell Git:
 
 *“Hey, I want to include these files in the next snapshot.”*
@@ -263,6 +267,8 @@ Now that the files are staged, let’s commit them:
 git commit -m "First Commit - Added example.qmd and rendered HTML files"
 ```
 
+![Committing Changes Using git commit](images/git_commit.png)
+
 The **-m** lets you attach a short message describing what this commit is about.
 
 -   Why This Step Matters:
@@ -271,21 +277,21 @@ The **-m** lets you attach a short message describing what this commit is about.
 
     -   Commit messages are like breadcrumbs — they help you (and your future teammates) understand what changes were made, and why.
 
-+---------------+-----------------------------------------------------+
-| **STEP**      | **PURPOSE**                                         |
-+===============+=====================================================+
-| ```           | Check what git is tracking                          |
-| git status    |                                                     |
-| ```           |                                                     |
-+---------------+-----------------------------------------------------+
-| ```           | Prepare the files for commit                        |
-| git add       |                                                     |
-| ```           |                                                     |
-+---------------+-----------------------------------------------------+
-| ```           | Save a snapshot with a message                      |
-| git commit    |                                                     |
-| ```           |                                                     |
-+---------------+-----------------------------------------------------+
++---------------+---------------------------------------------------+
+| **STEP**      | **PURPOSE**                                       |
++===============+===================================================+
+| ```           | Check what git is tracking                        |
+| git status    |                                                   |
+| ```           |                                                   |
++---------------+---------------------------------------------------+
+| ```           | Prepare the files for commit                      |
+| git add       |                                                   |
+| ```           |                                                   |
++---------------+---------------------------------------------------+
+| ```           | Save a snapshot with a message                    |
+| git commit    |                                                   |
+| ```           |                                                   |
++---------------+---------------------------------------------------+
 
 : Recap of step 2
 
@@ -358,6 +364,8 @@ Now's let's send (push) our local commits to GitHub:
 ```         
 git push -u origin main 
 ```
+
+![Pushing all the local changes with git push -u origin main](images/git_push.png)
 
 The -u flag tells Git to remember that “origin/main” is the default place to push changes next time.
 
@@ -746,19 +754,21 @@ Open example.qmd in your editor.
 
 Git will have inserted conflict markers inside the file, showing you the two versions:
 
-```         
-<<<<<<< HEAD
-This is the version from the main branch.
-=======
-This is the version from the testbranch.
->>>>>>> testbranc
-```
-
 -   The section between \<\<\<\<\<\<\< HEAD and ======= shows what is currently in main.
 
 -   The section between ======= and \>\>\>\>\>\>\> testbranch shows what is coming from testbranch.
 
 -   Our job is to choose which changes to keep, or combine them, and then remove all the conflict markers.
+
+```         
+
+eval=FALSE
+#<<<<<<< HEAD
+This is the version from the main branch.
+=======
+This is the version from the testbranch.
+>>>>>>> testbranch
+```
 
 ### Step 7.3: Fix the Conflict
 
@@ -1043,6 +1053,8 @@ At this point, you can:
 
 -   Or, if everything is fine, just recommit with a better message.
 
+![Sample Plot from example.qmd](images/plot.png)
+
 ### Step 11.3: Recommit Properly
 
 When you are ready, you can stage (if needed) and commit again with a better or corrected message:
@@ -1065,7 +1077,9 @@ Now you have replaced the rushed commit with a better one — and your work is c
 
 : Summary step 11
 
-The last commit is undone, but your edits remain staged, ready for a better commit. \newpage
+The last commit is undone, but your edits remain staged, ready for a better commit.
+
+\newpage
 
 # Summary of Actions
 
@@ -1150,4 +1164,4 @@ By following these steps, you learned how to:
 
 # Conclusion
 
-Mastering Git provides a strong foundation for any collaborative or individual project work. Whether you are coding, writing, or analyzing data, Git ensures that your progress is organized, secure, and easy to manage.
+At first, Git can feel like overkill for a simple project — but once you’ve used it properly, you wonder how you ever worked without it. From saving your progress to fixing mistakes and collaborating without chaos, Git takes the stress out of managing your work. This guide walked you through the basics, but the real power of Git shows up when things go wrong — and you’re able to stay calm, because Git’s got your back. Keep practicing, keep pushing, and soon this stuff will feel second nature.\
